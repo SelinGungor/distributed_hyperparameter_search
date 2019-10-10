@@ -1,0 +1,25 @@
+apiVersion: kubedb.com/v1alpha1
+kind: Postgres
+metadata:
+  name: postgresdb
+spec:
+  version: "10.2-v2"
+  databaseSecret:
+    secretName: postgres-secret
+  storageType: Durable
+  storage:
+    storageClassName: "standard"
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+  serviceTemplate:
+    spec:
+      type: ClusterIP
+      ports:
+        - name:  http
+          port:  5432
+          targetPort: http
+  terminationPolicy: Delete
+    #Change terminationPolicy to DoNotTerminate later

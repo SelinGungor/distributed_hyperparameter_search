@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+  labels:
+     app: taskQueue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taskQueue
+  template:
+    metadata:
+      labels:
+        app: taskQueue
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq-with-management
+        ports:
+        - containerPort: 5672
+          name: rabbitmq
+        - containerPort: 15672
+          name: rabbitmq-ui
+        imagePullPolicy: IfNotPresent
+
+

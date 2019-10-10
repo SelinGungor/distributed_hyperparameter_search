@@ -1,0 +1,5 @@
+queue:
+  rabbitmq_uri: amqp://guest:guest@rabbitmq-service:5672
+  routing_key: "*.fruit"
+  exchange_name: "topic_hyperparameters"
+  queue_name: "queue_hyperparameters"

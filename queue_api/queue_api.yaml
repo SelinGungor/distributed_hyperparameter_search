@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue-filler
+  labels:
+    app: queue-filler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queue-filler
+  template:
+    metadata:
+      labels:
+        app: queue-filler
+    spec:
+      containers:
+      - name: queue-create
+        image: queue-create
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: IfNotPresent

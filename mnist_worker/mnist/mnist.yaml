@@ -1,0 +1,10 @@
+database:
+  db.url: postgresql://admin:admin@postgresdb:5432/resultsdb
+  db.echo: True
+
+queue:
+  rabbitmq_uri: amqp://guest:guest@rabbitmq-service:5672
+  binding_keys:
+    - "*.fruit"
+  exchange_name: "topic_hyperparameters"
+  queue_name: "queue_hyperparameters"
